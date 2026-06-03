@@ -1,54 +1,67 @@
 let gold = 0;
+let age = 14;
 
-let working = false;
+let currentJob = null;
+let progress = 0;
 
 const goldText = document.getElementById("gold");
-const workBtn = document.getElementById("workBtn");
-const progressFill = document.getElementById("progressFill");
+const ageText = document.getElementById("age");
+const currentJobText = document.getElementById("currentJob");
 
-function updateGold() {
+const progressFill =
+    document.getElementById("progressFill");
+
+const progressText =
+    document.getElementById("progressText");
+
+const beggarBtn =
+    document.getElementById("beggarBtn");
+
+function updateUI() {
+
     goldText.textContent = gold;
+
+    ageText.textContent =
+        age.toFixed(1);
+
+    currentJobText.textContent =
+        currentJob || "なし";
 }
 
-function startWork() {
-
-    if (working) return;
-
-    working = true;
-
-    workBtn.disabled = true;
-
-    let progress = 0;
-
-    const interval = setInterval(() => {
-
-        progress += 1;
-
-        progressFill.style.width =
-            (progress / 60) * 100 + "%";
-
-        if (progress >= 60) {
-
-            clearInterval(interval);
-
-            gold++;
-
-            updateGold();
-
-            progressFill.style.width = "0%";
-
-            workBtn.disabled = false;
-
-            working = false;
-        }
-
-    }, 50);
-}
-
-workBtn.addEventListener(
+beggarBtn.addEventListener(
     "pointerdown",
     function (e) {
+
         e.preventDefault();
-        startWork();
+
+        currentJob = "物乞い";
+
+        updateUI();
     }
 );
+
+setInterval(() => {
+
+    age += 0.001;
+
+    if (currentJob === "物乞い") {
+
+        progress++;
+
+        progressFill.style.width =
+            progress + "%";
+
+        progressText.textContent =
+            progress + "%";
+
+        if (progress >= 100) {
+
+            progress = 0;
+
+            gold += 1;
+        }
+    }
+
+    updateUI();
+
+}, 100);
