@@ -1,7 +1,10 @@
 let gold = 0;
 
+const goldText = document.getElementById("gold");
+const workBtn = document.getElementById("workBtn");
+
 function updateGold() {
-    document.getElementById("gold").textContent = gold;
+    goldText.textContent = gold;
 }
 
 function work() {
@@ -9,8 +12,15 @@ function work() {
     updateGold();
 }
 
+workBtn.addEventListener("pointerdown", function (e) {
+    e.preventDefault();
+    work();
+});
+
 document.addEventListener(
-    "touchstart",
-    function () {},
-    { passive: true }
+    "gesturestart",
+    function (e) {
+        e.preventDefault();
+    },
+    { passive: false }
 );
