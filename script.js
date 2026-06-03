@@ -5,6 +5,12 @@ function updateGold() {
 }
 
 function work() {
-    gold += 1;
+    gold++;
     updateGold();
 }
+
+document.addEventListener(
+    "touchstart",
+    function () {},
+    { passive: true }
+);
