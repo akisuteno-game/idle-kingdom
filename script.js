@@ -1,7 +1,10 @@
 let gold = 0;
 
+const goldText = document.getElementById("gold");
+const workBtn = document.getElementById("workBtn");
+
 function updateGold() {
-    document.getElementById("gold").textContent = gold;
+    goldText.textContent = gold;
 }
 
 function work() {
@@ -9,43 +12,9 @@ function work() {
     updateGold();
 }
 
-function stopEvent(e) {
+workBtn.addEventListener("touchstart", function (e) {
     e.preventDefault();
-}
+    work();
+}, { passive: false });
 
-document.addEventListener("gesturestart", stopEvent, {
-    passive: false
-});
-
-document.addEventListener("gesturechange", stopEvent, {
-    passive: false
-});
-
-document.addEventListener("gestureend", stopEvent, {
-    passive: false
-});
-
-document.addEventListener("touchmove", stopEvent, {
-    passive: false
-});
-
-document.addEventListener("dblclick", stopEvent, {
-    passive: false
-});
-
-let lastTouchEnd = 0;
-
-document.addEventListener(
-    "touchend",
-    function (event) {
-
-        const now = Date.now();
-
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-
-        lastTouchEnd = now;
-    },
-    false
-);
+workBtn.addEventListener("click", work);
