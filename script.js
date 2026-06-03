@@ -1,20 +1,10 @@
 let gold = 0;
 
-const goldText = document.getElementById("gold");
-const workBtn = document.getElementById("workBtn");
-
 function updateGold() {
-    goldText.textContent = gold;
+    document.getElementById("gold").textContent = gold;
 }
 
 function work() {
-    gold++;
+    gold += 1;
     updateGold();
 }
-
-workBtn.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    work();
-}, { passive: false });
-
-workBtn.addEventListener("click", work);
