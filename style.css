@@ -13,6 +13,9 @@ body {
     font-family: Arial, sans-serif;
 
     touch-action: manipulation;
+    overscroll-behavior: none;
+
+    position: fixed;
 }
 
 h1 {
