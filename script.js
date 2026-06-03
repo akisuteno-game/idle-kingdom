@@ -28,17 +28,15 @@ function updateUI() {
         currentJob || "なし";
 }
 
-beggarBtn.addEventListener(
-    "pointerdown",
-    function (e) {
+beggarBtn.onclick = function () {
 
-        e.preventDefault();
+    currentJob = "物乞い";
 
-        currentJob = "物乞い";
+    progressText.textContent =
+        "作業中...";
 
-        updateUI();
-    }
-);
+    updateUI();
+};
 
 setInterval(() => {
 
@@ -46,7 +44,7 @@ setInterval(() => {
 
     if (currentJob === "物乞い") {
 
-        progress++;
+        progress += 1;
 
         progressFill.style.width =
             progress + "%";
@@ -65,3 +63,5 @@ setInterval(() => {
     updateUI();
 
 }, 100);
+
+updateUI();
