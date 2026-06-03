@@ -1,1 +1,9 @@
-あ
+function initGame() {
+
+    loadGame();
+
+    updateUI();
+
+}
+
+initGame();
