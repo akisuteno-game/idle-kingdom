@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -18,6 +19,44 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <body>
 
 <h1>Idle Kingdom</h1>
+
+<div class="layout">
+
+<div class="card">
+
+<h2>ステータス</h2>
+
+<p>所持金: <span id="gold">0</span></p>
+
+<p>年齢: <span id="age">14</span></p>
+
+<p>職業: <span id="job">なし</span></p>
+
+</div>
+
+<div class="card">
+
+<h2>進捗</h2>
+
+<div class="progress-bar">
+
+<div id="progressFill"></div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>職業一覧</h2>
+
+<button onclick="setJob('beggar')">
+物乞い
+</button>
+
+</div>
+
+</div>
 
 <script src="js/data.js"></script>
 <script src="js/jobs.js"></script>
