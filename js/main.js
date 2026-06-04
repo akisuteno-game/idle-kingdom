@@ -4,6 +4,9 @@ function initGame() {
 
     updateUI();
 
+    setInterval(gameLoop, 100);
+
+    setInterval(saveGame, 5000);
 }
 
 initGame();
